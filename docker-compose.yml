@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower:1.5.3
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    ## If accessing private docker repos:
+    # - /home/user/.docker/config.json:/config.json
+
+    command: --debug --http-api-update --label-enable
+
+    environment:
+      - WATCHTOWER_HTTP_API_TOKEN
+
+    ## If also enabling notification, eg, Slack:
+    # - WATCHTOWER_NOTIFICATIONS='slack'
+    # - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL
+
+    ports:
+      - '9901:8080'
+
+    restart: unless-stopped

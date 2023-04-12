@@ -1,0 +1,7 @@
+.env
+setenv.sh
+
+.DS_Store
+.thumbs.db
+.idea
+.vscode
