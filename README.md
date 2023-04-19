@@ -93,19 +93,18 @@ Of course, as with everything, adjust the setup as desired.
 
 #### Image tagging and update strategy
 
-A possible update strategy that you want to consider, is as follows:
+As a common practice, it is likely that, for a new version `X.Y.Z` of your app,
+you are pushing a corresponding tag `vX.Y.Z` to your git repository,
+while the corresponding image gets the tag `X.Y.Z`.
 
-For a given new release of your app, that is, with version `X.Y.Z`,
-push the image to your registry with the following tags:
+If not already, consider also generating the image tags:
 
-- `X.Y.Z`: the specific version
 - `X.Y`: the major and minor version
 - `X`: the major version
 - `latest`: the latest version
 
-Then, in your `docker-compose.yml`, indicate
-the desired "version level" for the automated updates,
-for example, for every new release with the same `X.Y`:
+Then, in your `docker-compose.yml`, indicate the desired "version level" for the CD automated updates,
+for example, for every new release with the same major and minor, `X.Y`:
 
 ```yaml
 services:
